@@ -2,6 +2,68 @@
 
 {% block content %}
 
-<h1>Homepage...</h1>
+<!-- <h1>{{ api.0.ReportingArea }} Area Weather</h1> -->
+<br />
+
+
+
+<!-- Calls Context variable in Django -->
+<!-- {{ aqi_data.0.Number }}
+{{ api.0.Category.Number }} -->
+
+{% if api %}
+  {% if api == "ERROR" %}
+<div class="p-5 mb-2 {{ category_color }} rounded-3">
+  <div class="container-fluid py-5">
+    <h3>There was an Error while parsing the API data...</h3>
+    <p>{{ api }}: Issue with the json parsing in views.py</p>
+  </div>
+</div>
+  {% elif api == "UNSET" %}
+<div class="p-5 mb-2 {{ category_color }} rounded-3 text-center">
+  <div class="container-fluid py-5">
+    <h3>Enter a Zipcode in The Search Field Above</h3>
+    <p>««Zipcode Status: {{ api }}»»</p>
+  </div>
+</div>
+<div class="text-center my-2"><a class="btn btn-primary btn-lg" type="button" href="{% url 'about' %}">More Info »</a></div>
+  {% else %}
+<div class="p-5 mb-2 {{ category_color }} rounded-3">
+  <div class="container-fluid py-5">
+    <h2 class="display-5 fw-bold">Air Quality: {{ api.0.AQI }}</h2>
+    <p class="col-md-8 fs-5">The air quality in the  {{ api.0.ReportingArea }} area is {{ api.0.Category.Name }}.</p>
+    <hr />
+    <p>{{category_description}}</p>
+  </div>
+</div>
+<hr />
+<div class="p-1 mb-1 rounded-3">
+  <div class="container-fluid py-5">
+    <table class="table table-bordered">
+    	<caption style="text-align:center;font-size:larger;caption-side: top;"><strong>AQI Basics for Ozone and Particle Pollution</strong></caption>
+    	<thead>
+    		<tr class="bg-info bg-gradient bg-opacity-10">
+    			<th scope="col" style="text-align: center; vertical-align: text-top; width: 114px;">Daily AQI Color</th>
+    			<th scope="col" style="text-align: center; vertical-align: text-top; width: 122px;">Levels of Concern</th>
+    			<th scope="col" style="text-align: center; vertical-align: text-top; width: 98px;">Values of Index</th>
+    			<th scope="col" style="text-align: center; vertical-align: text-top; width: 258px;">Description of Air Quality</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+        <tr class="{{ category_color }}">
+          <td class="text-center"><strong>{{ aqi_data.0.Color }}</strong></td>
+          <td class="text-center"><strong>{{ aqi_data.0.AQI }}</strong></td>
+          <td class="text-center"><strong>{{ aqi_data.0.low_value }} to {{ aqi_data.0.high_value }}</strong></td>
+          <td class="text-center"><strong>{{ aqi_data.0.Description }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center"><a class="btn btn-primary btn-lg" type="button" href="{% url 'about' %}">View All Levels of Concern</a></div>
+  </div>
+</div>
+
+  {% endif %}
+
+{% endif %}
 
 {% endblock %}

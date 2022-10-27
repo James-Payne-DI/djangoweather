@@ -2,6 +2,56 @@
 
 {% block content %}
 
-<h1>About Me...</h1>
+<h1>More Info...</h1>
+
+<table class="table table-bordered">
+	<caption style="text-align:center;font-size:larger;caption-side: top;"><strong>AQI Basics for Ozone and Particle Pollution</strong></caption>
+	<thead>
+		<tr style="background: rgb(225, 235, 244);">
+			<th scope="col" style="text-align: center; vertical-align: text-top; width: 114px;">Daily AQI Color</th>
+			<th scope="col" style="text-align: center; vertical-align: text-top; width: 122px;">Levels of Concern</th>
+			<th scope="col" style="text-align: center; vertical-align: text-top; width: 98px;">Values of Index</th>
+			<th scope="col" style="text-align: center; vertical-align: text-top; width: 258px;">Description of Air Quality</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background: rgb(0, 228, 0)">
+			<td style="text-align: center;"><strong>Green</strong></td>
+			<td id="good" style="text-align: center;"><strong>Good</strong></td>
+			<td style="text-align: center;"><strong>0 to 50</strong></td>
+			<td><strong>Air quality is satisfactory, and air pollution poses little or no risk.</strong></td>
+		</tr>
+		<tr style="background:yellow;">
+			<td style="text-align: center;"><strong>Yellow</strong></td>
+			<td id="mod" style="text-align: center;"><strong>Moderate</strong></td>
+			<td style="text-align: center;"><strong>51 to 100</strong></td>
+			<td><strong>Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.</strong></td>
+		</tr>
+		<tr style="background: rgb(255, 126, 0);color:white;">
+			<td style="text-align: center;"><strong>Orange</strong></td>
+			<td id="sens" style="text-align: center;"><strong>Unhealthy for Sensitive Groups</strong></td>
+			<td style="text-align: center;"><strong>101 to 150</strong></td>
+			<td><strong>Members of sensitive groups may experience health effects. The general public is less likely to be affected.</strong></td>
+		</tr>
+		<tr style="background:red;color:white;">
+			<td style="text-align: center; "><strong>Red</strong></td>
+			<td id="unh" style="text-align: center; "><strong>Unhealthy</strong></td>
+			<td style="text-align: center; "><strong>151 to 200</strong></td>
+			<td><strong>Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.</strong></td>
+		</tr>
+		<tr style="background: rgb(143, 63, 151);color:white;">
+			<td style="text-align: center;"><strong>Purple</strong></td>
+			<td id="vunh" style="text-align: center; "><strong>Very Unhealthy</strong></td>
+			<td style="text-align: center; "><strong>201 to 300</strong></td>
+			<td><strong>Health alert: The risk of health effects is increased for everyone.</strong></td>
+		</tr>
+		<tr style="background: rgb(126, 0, 35 );color:white;">
+			<td style="text-align: center; "><strong>Maroon</strong></td>
+			<td id="haz" style="text-align: center; "><strong>Hazardous</strong></td>
+			<td style="text-align: center; "><strong>301 and higher</strong></td>
+			<td><strong>Health warning of emergency conditions: everyone is more likely to be affected.</strong></td>
+		</tr>
+	</tbody>
+</table>
 
 {% endblock %}
